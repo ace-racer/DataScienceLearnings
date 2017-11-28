@@ -20,15 +20,24 @@ def compute_hcf(a, b):
 		print "Factors of {0}: ".format(b) + str(b_factors_tuples_set)
 		
 		print "Factors of {0}: ".format(a) + str(a_factors_tuples)
+		
+		# unzip the factors of a into 2 tuples
 		a_factors_left, a_factors_right = zip(*a_factors_tuples)
+		
+		# convert the tuples to lists and then concatenate the lists
 		a_factors = list(a_factors_left) + list(a_factors_right)
+		
+		# sort the factors of the smaller number in descending order
 		a_factors_sorted = sorted(a_factors, reverse = True)
 		print "Sorted Factors of {0}: ".format(a) + str(a_factors_sorted)
 		
+		# list comprehension - and using tuples
 		common_factors = [ a_factor 
 						   for a_factor in a_factors_sorted 
 						   for b_factor_tuple in b_factors_tuples_set
 						   if a_factor in (b_factor_tuple[0], b_factor_tuple[1]) ]
+						   
+		# the first common factor is the HCF
 		return common_factors[0]
 		
 		
